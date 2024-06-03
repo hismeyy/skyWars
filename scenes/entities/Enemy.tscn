@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dvsajgvsrttjt"]
 
-[ext_resource type="Script" path="res://scripts/main/Enemy.gd" id="1_p1xxm"]
+[ext_resource type="Script" path="res://scripts/entities/Enemy.gd" id="1_q0ah5"]
 [ext_resource type="Texture2D" uid="uid://y5ysbc8iog0o" path="res://assets/graphics/characters/enemy/down/enemy1_down1.png" id="2_pf8di"]
 [ext_resource type="Texture2D" uid="uid://dhqsqtn2ogl76" path="res://assets/graphics/characters/enemy/down/enemy1_down2.png" id="3_r3b1p"]
 [ext_resource type="Texture2D" uid="uid://dolc3fk3lg8kn" path="res://assets/graphics/characters/enemy/down/enemy1_down3.png" id="4_fhb0g"]
@@ -37,7 +37,7 @@ animations = [{
 
 [node name="Enemy" type="Area2D"]
 light_mask = 0
-script = ExtResource("1_p1xxm")
+script = ExtResource("1_q0ah5")
 speed = 100
 metadata/_edit_group_ = true
 

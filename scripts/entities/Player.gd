@@ -11,6 +11,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !get_parent().game_state:
+		return
+	
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("left_move"):
 		velocity.x -= 1
@@ -39,4 +42,3 @@ func _on_area_entered(area):
 	$CollisionPolygon2D.set_deferred("disabled", true)
 	$AnimatedSprite2D.play("down")
 	hit.emit()
-	print("发生碰撞")

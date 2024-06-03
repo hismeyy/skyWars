@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bu3wonq3b1202"]
+[gd_scene load_steps=9 format=3 uid="uid://bu3wonq3b1202"]
 
 [ext_resource type="Script" path="res://scripts/main/Main.gd" id="1_mnxx1"]
 [ext_resource type="Script" path="res://scripts/main/BackgroundImg.gd" id="1_nyvii"]
 [ext_resource type="Texture2D" uid="uid://b0s2x70t5ibyf" path="res://assets/graphics/environments/background.png" id="2_1r6ph"]
 [ext_resource type="PackedScene" uid="uid://dwrb8x1cu8kpb" path="res://scenes/entities/Player.tscn" id="3_sk77h"]
 [ext_resource type="PackedScene" uid="uid://dvsajgvsrttjt" path="res://scenes/entities/Enemy.tscn" id="5_xytp8"]
+[ext_resource type="Script" path="res://scripts/entities/Enemys.gd" id="6_alwmt"]
 
 [sub_resource type="Animation" id="Animation_8hq7e"]
 resource_name = "play"
@@ -69,5 +70,7 @@ position = Vector2(240, 780)
 wait_time = 0.5
 
 [node name="Enemys" type="Node" parent="."]
+script = ExtResource("6_alwmt")
 
+[connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

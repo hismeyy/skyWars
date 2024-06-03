@@ -13,6 +13,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !get_parent().get_parent().game_state:
+		return
 	var velocity = Vector2.ZERO
 	velocity.y = 1
 	velocity = velocity * speed
