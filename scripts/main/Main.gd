@@ -23,7 +23,7 @@ func _on_enemy_timer_timeout():
 
 func game_over():
 	game_state = false
-	$BackgroundImg.stop()
+	$BackgroundImg.pause()
 	$EnemyTimer.stop()
 	
 	

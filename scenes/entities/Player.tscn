@@ -40,6 +40,7 @@ animations = [{
 }]
 
 [node name="Player" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_u325n")
 metadata/_edit_group_ = true
 

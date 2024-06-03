@@ -36,7 +36,7 @@ animations = [{
 }]
 
 [node name="Enemy" type="Area2D"]
-light_mask = 0
+collision_layer = 2
 script = ExtResource("1_q0ah5")
 speed = 100
 metadata/_edit_group_ = true
@@ -51,4 +51,5 @@ polygon = PackedVector2Array(0, -17, -13, -17, -13, -8, -21, -8, -24, -3, -3, 17
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
