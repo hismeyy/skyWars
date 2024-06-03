@@ -42,6 +42,7 @@ _data = {
 
 [node name="Main" type="Node"]
 script = ExtResource("1_mnxx1")
+enemy_scene = ExtResource("5_xytp8")
 
 [node name="BackgroundImg" type="AnimationPlayer" parent="."]
 libraries = {
@@ -64,4 +65,9 @@ position = Vector2(240, 780)
 
 [node name="Player" parent="." instance=ExtResource("3_sk77h")]
 
-[node name="Enemy" parent="." instance=ExtResource("5_xytp8")]
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Enemys" type="Node" parent="."]
+
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
