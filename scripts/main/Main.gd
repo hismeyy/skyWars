@@ -26,5 +26,6 @@ func game_over():
 	game_state = false
 	$BackgroundImg.pause()
 	$EnemyTimer.stop()
+	$BackgroundMusic.stop()
 	
 	
