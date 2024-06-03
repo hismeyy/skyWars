@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bu3wonq3b1202"]
+[gd_scene load_steps=7 format=3 uid="uid://bu3wonq3b1202"]
 
-[ext_resource type="Script" path="res://scripts/main/BackgroundImg.gd" id="1_6daxw"]
-[ext_resource type="Texture2D" uid="uid://b0s2x70t5ibyf" path="res://assets/graphics/environments/background.png" id="1_vy7m4"]
+[ext_resource type="Script" path="res://scripts/main/Main.gd" id="1_mnxx1"]
+[ext_resource type="Script" path="res://scripts/main/BackgroundImg.gd" id="1_nyvii"]
+[ext_resource type="Texture2D" uid="uid://b0s2x70t5ibyf" path="res://assets/graphics/environments/background.png" id="2_1r6ph"]
+[ext_resource type="PackedScene" uid="uid://dwrb8x1cu8kpb" path="res://scenes/entities/Player.tscn" id="3_sk77h"]
 
 [sub_resource type="Animation" id="Animation_8hq7e"]
 resource_name = "play"
@@ -38,19 +40,25 @@ _data = {
 }
 
 [node name="Main" type="Node"]
+script = ExtResource("1_mnxx1")
 
 [node name="BackgroundImg" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_nwv4n")
 }
 speed_scale = 5.0
-script = ExtResource("1_6daxw")
+script = ExtResource("1_nyvii")
 
 [node name="Background1" type="Sprite2D" parent="BackgroundImg"]
-texture = ExtResource("1_vy7m4")
+texture = ExtResource("2_1r6ph")
 centered = false
 
 [node name="Background2" type="Sprite2D" parent="BackgroundImg"]
 position = Vector2(0, -852)
-texture = ExtResource("1_vy7m4")
+texture = ExtResource("2_1r6ph")
 centered = false
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(240, 780)
+
+[node name="Player" parent="." instance=ExtResource("3_sk77h")]
