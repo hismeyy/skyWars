@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var speed = 400
+var runing = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.play("fly")
@@ -13,7 +14,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !get_tree().current_scene.game_state:
+	if !get_tree().current_scene.game_state || !runing:
 		return
 	var velocity = Vector2.ZERO
 	velocity.y = 1
@@ -26,4 +27,11 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 
 func _on_area_entered(area):
+	# 停止运动
+	runing = false
 	$AnimatedSprite2D.play("down")
+	
+
+
+func _on_animated_sprite_2d_animation_finished():
+	queue_free()
