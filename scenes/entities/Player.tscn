@@ -1,13 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwrb8x1cu8kpb"]
+[gd_scene load_steps=9 format=3 uid="uid://dwrb8x1cu8kpb"]
 
 [ext_resource type="Texture2D" uid="uid://buvpak5o8xo4o" path="res://assets/graphics/characters/player/fly/hero1.png" id="1_fgf1o"]
 [ext_resource type="Script" path="res://scripts/entities/Player.gd" id="1_u325n"]
+[ext_resource type="Texture2D" uid="uid://ecened8hyvg2" path="res://assets/graphics/characters/player/down/hero_blowup_n1.png" id="2_1myoq"]
 [ext_resource type="Texture2D" uid="uid://wmk8isgwdy6w" path="res://assets/graphics/characters/player/fly/hero2.png" id="2_ymxlr"]
+[ext_resource type="Texture2D" uid="uid://8aeuvh5sraah" path="res://assets/graphics/characters/player/down/hero_blowup_n2.png" id="3_v5xpg"]
+[ext_resource type="Texture2D" uid="uid://dos1vt2gk1me" path="res://assets/graphics/characters/player/down/hero_blowup_n3.png" id="4_uwh8y"]
+[ext_resource type="Texture2D" uid="uid://dtsktbvv02l8c" path="res://assets/graphics/characters/player/down/hero_blowup_n4.png" id="5_ecfrt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4bjey"]
 animations = [{
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1myoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v5xpg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uwh8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ecfrt")
+}],
+"loop": false,
 "name": &"down",
 "speed": 5.0
 }, {
@@ -35,3 +51,5 @@ autoplay = "fly"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-0.0408096, -0.20089)
 polygon = PackedVector2Array(0.0408096, -61.7991, -11.9592, -44.7991, -12.9592, -19.7991, -24.9592, -5.79911, -24.9592, -18.7991, -37.9592, -18.7991, -36.9592, 5.20089, -47.9592, 16.2009, -48.9592, 25.2009, -38.9592, 26.2009, -36.9592, 32.2009, -31.9592, 61.2009, -22.9592, 27.2009, -15.9592, 24.2009, -7.95919, 33.2009, 13.0408, 33.2009, 19.0408, 22.2009, 25.0408, 23.2009, 31.0408, 61.2009, 38.0408, 28.2009, 41.0408, 24.2009, 48.0408, 24.2009, 49.0408, 15.2009, 37.0408, 4.20089, 37.0408, -15.7991, 34.0408, -17.7991, 29.0408, -17.7991, 27.0408, -13.7991, 27.0408, -5.79911, 15.0408, -20.7991, 14.0408, -43.7991, 10.0408, -53.7991)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

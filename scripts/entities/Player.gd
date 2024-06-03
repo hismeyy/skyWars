@@ -1,4 +1,5 @@
 extends Area2D
+signal hit
 
 @export var speed = 400
 var screen_size
@@ -31,3 +32,11 @@ func start(pos):
 	show()
 	$CollisionPolygon2D.disabled = false
 	$AnimatedSprite2D.play("fly")
+
+
+func _on_area_entered(area):
+	# 发生碰撞
+	$CollisionPolygon2D.set_deferred("disabled", true)
+	$AnimatedSprite2D.play("down")
+	hit.emit()
+	print("发生碰撞")
