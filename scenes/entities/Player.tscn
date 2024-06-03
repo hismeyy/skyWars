@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwrb8x1cu8kpb"]
+[gd_scene load_steps=12 format=3 uid="uid://dwrb8x1cu8kpb"]
 
 [ext_resource type="Texture2D" uid="uid://buvpak5o8xo4o" path="res://assets/graphics/characters/player/fly/hero1.png" id="1_fgf1o"]
 [ext_resource type="Script" path="res://scripts/entities/Player.gd" id="1_u325n"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://8aeuvh5sraah" path="res://assets/graphics/characters/player/down/hero_blowup_n2.png" id="3_v5xpg"]
 [ext_resource type="Texture2D" uid="uid://dos1vt2gk1me" path="res://assets/graphics/characters/player/down/hero_blowup_n3.png" id="4_uwh8y"]
 [ext_resource type="Texture2D" uid="uid://dtsktbvv02l8c" path="res://assets/graphics/characters/player/down/hero_blowup_n4.png" id="5_ecfrt"]
+[ext_resource type="AudioStream" uid="uid://x6m08xqroi6v" path="res://assets/audio/bullet.wav" id="9_bgkwn"]
+[ext_resource type="AudioStream" uid="uid://cgnhigjqbphf5" path="res://assets/audio/me_down.wav" id="10_o8p1h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4bjey"]
 animations = [{
@@ -59,7 +61,13 @@ polygon = PackedVector2Array(0.0408096, -61.7991, -11.9592, -44.7991, -12.9592, 
 [node name="Bullets" type="Node" parent="."]
 
 [node name="BulletTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.2
+
+[node name="BulletSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_bgkwn")
+
+[node name="MeDownSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_o8p1h")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]

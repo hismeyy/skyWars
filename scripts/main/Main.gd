@@ -4,6 +4,7 @@ extends Node
 var game_state = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$BackgroundMusic.play()
 	game_state = true
 	$BackgroundImg.start()
 	$Player.start($StartPosition.position)

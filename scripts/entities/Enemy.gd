@@ -27,6 +27,9 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 
 func _on_area_entered(area):
+	$CollisionPolygon2D.set_deferred("disabled", true)
+	# 播放碰撞音效
+	$AudioStreamPlayer.play()
 	# 停止运动
 	runing = false
 	$AnimatedSprite2D.play("down")

@@ -44,6 +44,8 @@ func start(pos):
 
 
 func _on_area_entered(area):
+	# 播放碰撞音效
+	$MeDownSound.play()
 	# 发生碰撞
 	$CollisionPolygon2D.set_deferred("disabled", true)
 	$AnimatedSprite2D.play("down")
@@ -53,6 +55,7 @@ func _on_area_entered(area):
 
 func _on_bullet_timer_timeout():
 	# 添加子弹
+	$BulletSound.play()
 	var bullet_simple = bullet_simple_scene.instantiate()
 	bullet_simple.position = position
 	bullet_simple.position.y = bullet_simple.position.y - 60

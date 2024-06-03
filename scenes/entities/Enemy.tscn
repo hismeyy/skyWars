@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvsajgvsrttjt"]
+[gd_scene load_steps=9 format=3 uid="uid://dvsajgvsrttjt"]
 
 [ext_resource type="Script" path="res://scripts/entities/Enemy.gd" id="1_q0ah5"]
 [ext_resource type="Texture2D" uid="uid://y5ysbc8iog0o" path="res://assets/graphics/characters/enemy/down/enemy1_down1.png" id="2_pf8di"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dolc3fk3lg8kn" path="res://assets/graphics/characters/enemy/down/enemy1_down3.png" id="4_fhb0g"]
 [ext_resource type="Texture2D" uid="uid://q6amrb3a7tnv" path="res://assets/graphics/characters/enemy/down/enemy1_down4.png" id="5_flc2o"]
 [ext_resource type="Texture2D" uid="uid://v2gmyluerqr3" path="res://assets/graphics/characters/enemy/fly/enemy1.png" id="6_jegbk"]
+[ext_resource type="AudioStream" uid="uid://dnufbqqgm41r0" path="res://assets/audio/enemy1_down.wav" id="7_kesxr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vtd3y"]
 animations = [{
@@ -36,7 +37,7 @@ animations = [{
 }]
 
 [node name="Enemy" type="Area2D"]
-collision_layer = 6
+collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_q0ah5")
 speed = 100
@@ -51,6 +52,9 @@ autoplay = "fly"
 polygon = PackedVector2Array(0, -17, -13, -17, -13, -8, -21, -8, -24, -3, -3, 17, 5, 17, 25, -4, 21, -9, 13, -9, 13, -17)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_kesxr")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
