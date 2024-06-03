@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu3wonq3b1202"]
+
+[ext_resource type="Script" path="res://scripts/main/BackgroundImg.gd" id="1_6daxw"]
+[ext_resource type="Texture2D" uid="uid://b0s2x70t5ibyf" path="res://assets/graphics/environments/background.png" id="1_vy7m4"]
+
+[sub_resource type="Animation" id="Animation_8hq7e"]
+resource_name = "play"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundImg/Background1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 852)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackgroundImg/Background2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.1, 0, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -852), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nwv4n"]
+_data = {
+"backgroundPlay": SubResource("Animation_8hq7e")
+}
+
+[node name="Main" type="Node"]
+
+[node name="BackgroundImg" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nwv4n")
+}
+speed_scale = 5.0
+script = ExtResource("1_6daxw")
+
+[node name="Background1" type="Sprite2D" parent="BackgroundImg"]
+texture = ExtResource("1_vy7m4")
+centered = false
+
+[node name="Background2" type="Sprite2D" parent="BackgroundImg"]
+position = Vector2(0, -852)
+texture = ExtResource("1_vy7m4")
+centered = false
