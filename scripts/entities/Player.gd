@@ -2,6 +2,7 @@ extends Area2D
 signal hit
 
 @export var speed = 400
+@export var bullet_simple_scene: PackedScene
 var screen_size
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,7 +12,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !get_parent().game_state:
+	if !get_tree().current_scene.game_state:
 		return
 	
 	var velocity = Vector2.ZERO
@@ -29,6 +30,11 @@ func _process(delta):
 	
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
+	
+	if Input.is_action_just_pressed("fire"):
+		$BulletTimer.start()
+	if Input.is_action_just_released("fire"):
+		$BulletTimer.stop()
 
 func start(pos):
 	position = pos
@@ -41,4 +47,13 @@ func _on_area_entered(area):
 	# 发生碰撞
 	$CollisionPolygon2D.set_deferred("disabled", true)
 	$AnimatedSprite2D.play("down")
+	$BulletTimer.stop()
 	hit.emit()
+
+
+func _on_bullet_timer_timeout():
+	# 添加子弹
+	var bullet_simple = bullet_simple_scene.instantiate()
+	bullet_simple.position = position
+	bullet_simple.position.y = bullet_simple.position.y - 60
+	$Bullets.add_child(bullet_simple)

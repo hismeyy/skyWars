@@ -64,6 +64,7 @@ centered = false
 position = Vector2(240, 780)
 
 [node name="Player" parent="." instance=ExtResource("3_sk77h")]
+speed = 400
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 0.5
