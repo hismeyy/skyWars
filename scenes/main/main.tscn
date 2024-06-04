@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bu3wonq3b1202"]
+[gd_scene load_steps=11 format=3 uid="uid://bu3wonq3b1202"]
 
 [ext_resource type="Script" path="res://scripts/main/Main.gd" id="1_mnxx1"]
 [ext_resource type="Script" path="res://scripts/main/BackgroundImg.gd" id="1_nyvii"]
 [ext_resource type="Texture2D" uid="uid://b0s2x70t5ibyf" path="res://assets/graphics/environments/background.png" id="2_1r6ph"]
 [ext_resource type="PackedScene" uid="uid://dwrb8x1cu8kpb" path="res://scenes/entities/Player.tscn" id="3_sk77h"]
 [ext_resource type="PackedScene" uid="uid://dvsajgvsrttjt" path="res://scenes/entities/Enemy.tscn" id="5_xytp8"]
+[ext_resource type="PackedScene" uid="uid://cmsxqn66ev7ta" path="res://scenes/ui/Hud.tscn" id="5_yp71s"]
+[ext_resource type="PackedScene" uid="uid://dis1gwo8ajiwf" path="res://scenes/ui/Hud_1.tscn" id="6_oymft"]
 [ext_resource type="AudioStream" uid="uid://dqr6h3ddnq8u" path="res://assets/audio/game_music.ogg" id="6_ruxvc"]
 
 [sub_resource type="Animation" id="Animation_8hq7e"]
@@ -61,6 +63,10 @@ position = Vector2(0, -852)
 texture = ExtResource("2_1r6ph")
 centered = false
 
+[node name="HUD" parent="." instance=ExtResource("5_yp71s")]
+
+[node name="HUD1" parent="." instance=ExtResource("6_oymft")]
+
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(240, 780)
 
@@ -74,5 +80,8 @@ wait_time = 0.5
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ruxvc")
 
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
+[connection signal="game_again" from="HUD1" to="." method="_on_hud_1_game_again"]
+[connection signal="game_over" from="HUD1" to="." method="_on_hud_1_game_over"]
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

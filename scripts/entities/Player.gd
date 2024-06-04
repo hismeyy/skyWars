@@ -8,6 +8,7 @@ var screen_size
 func _ready():
 	hide()
 	screen_size = get_viewport_rect().size
+	$CollisionPolygon2D.set_deferred("disabled", true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
